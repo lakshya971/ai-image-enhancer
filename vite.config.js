@@ -1,8 +1,22 @@
 import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite'
+import react from '@vitejs/plugin-react'
+
+// https://vitejs.dev/config/
 export default defineConfig({
-  base: '/ai-image-enhancer/',
-  plugins: [
-    tailwindcss(),
-  ],
+  plugins: [react()],
+  base: './',
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
+  server: {
+    host: true,
+    port: 5174,
+  },
 })
